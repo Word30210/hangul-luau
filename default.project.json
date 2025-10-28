@@ -1,0 +1,1 @@
+{"name":"hangul-luau","className":"ModuleScript","filePaths":["src\\init.luau","default.project.json"],"children":[{"name":"internal","className":"Folder","children":[{"name":"constants","className":"ModuleScript","filePaths":["src\\internal\\constants.luau"]}]}]}

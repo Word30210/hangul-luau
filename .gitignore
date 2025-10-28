@@ -1,0 +1,25 @@
+# Roblox Studio files
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+
+# Darklua build files
+./.builded_src
+./.builded_test
+
+# lock files
+*.lock
+
+# wally packages
+./Packages
+
+# rojo files
+aftman.toml
+sourcemap.json
+
+# test files
+/test/*
+!/test/*.shared.client.luau
+!/test/*.shared.server.luau
+!/test/*.shared.luau

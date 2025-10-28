@@ -1,0 +1,9 @@
+{
+    "languageMode": "strict",
+    "lint": { "LocalShadow": false, "LocalUnused": false, "FunctionUnused": false, "ImportUnused": false },
+    "lintErrors": true,
+    "aliases": {
+        "hangul-luau": "./src",
+        "packages": "./Packages"
+    }
+}
