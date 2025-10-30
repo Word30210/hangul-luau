@@ -3,7 +3,7 @@
     "lint": { "LocalShadow": false, "LocalUnused": false, "FunctionUnused": false, "ImportUnused": false },
     "lintErrors": true,
     "aliases": {
-        "hangul-luau": "./src",
-        "packages": "./Packages"
+        "hangul-luau": "src",
+        "lune_packages": "lune_packages"
     }
 }

@@ -11,8 +11,10 @@
 # lock files
 *.lock
 
-# wally packages
-./Packages
+# pesde files
+.pesde
+/luau_packages
+/lune_packages
 
 # rojo files
 aftman.toml
