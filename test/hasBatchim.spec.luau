@@ -1,0 +1,110 @@
+local frktest = require("@lune_packages/frktest")
+local hasBatchim = require("@hangul-luau/core/hasBatchim")
+
+local test = frktest.test
+local check = frktest.assert.check
+local req = frktest.assert.require
+
+return function()
+    test.suite("hasBatchim.hasBatchim", function()
+        test.suite("받침이 있다고 판단되는 경우", function()
+            test.case("\"값\" 문자에서 받침이 있으므로 true를 반환한다.", function()
+                check.is_true(hasBatchim.hasBatchim("값"))
+            end)
+
+            test.case("\"공\" 문자에서 받침이 있으므로 true를 반환한다.", function()
+                check.is_true(hasBatchim.hasBatchim("공"))
+            end)
+
+            test.case("\"읊\" 문자에서 받침이 있으므로 true를 반환한다.", function()
+                check.is_true(hasBatchim.hasBatchim("읊"))
+            end)
+        end)
+
+        test.suite("받침이 없다고 판단되는 경우", function()
+            test.case("\"토\" 문자에서 받침이 없으므로 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasBatchim("토"))
+            end)
+
+            test.case("\"서\" 문자에서 받침이 없으므로 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasBatchim("서"))
+            end)
+
+            test.case("빈 문자열은 받침이 없으므로 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasBatchim(""))
+            end)
+        end)
+
+        test.suite("완성된 한글이 아닌 경우", function()
+            test.case("한글이 자음 또는 모음으로만 구성된 경우 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasBatchim("ㄱ"))
+                check.is_false(hasBatchim.hasBatchim("ㅏ"))
+            end)
+
+            test.case("한글 외의 문자를 입력하면 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasBatchim("cat"))
+                check.is_false(hasBatchim.hasBatchim("!"))
+            end)
+        end)
+    end)
+
+    test.suite("hasBatchim.hasSingleBatchim", function()
+        test.case("홑받침을 받으면 true를 반환한다.", function()
+            check.is_true(hasBatchim.hasSingleBatchim("공"))
+            check.is_true(hasBatchim.hasSingleBatchim("핫"))
+            check.is_true(hasBatchim.hasSingleBatchim("양"))
+            check.is_true(hasBatchim.hasSingleBatchim("신"))
+            check.is_true(hasBatchim.hasSingleBatchim("확"))
+        end)
+
+        test.suite("홑받침이 아니라고 판단되는 경우", function()
+            test.case("겹받침을 받으면 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasSingleBatchim("값"))
+                check.is_false(hasBatchim.hasSingleBatchim("읊"))
+                check.is_false(hasBatchim.hasSingleBatchim("웱"))
+            end)
+
+            test.case("받침이 없는 문자를 받으면 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasSingleBatchim("토"))
+                check.is_false(hasBatchim.hasSingleBatchim("서"))
+                check.is_false(hasBatchim.hasSingleBatchim("와"))
+            end)
+
+            test.case("한글 외의 문자를 입력하면 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasSingleBatchim("cat"))
+                check.is_false(hasBatchim.hasSingleBatchim(""))
+                check.is_false(hasBatchim.hasSingleBatchim("?"))
+            end)
+        end)
+    end)
+
+    test.suite("겹받침", function()
+        test.case("겹받침을 받으면 true를 반환한다.", function()
+            check.is_true(hasBatchim.hasDoubleBatchim("값"))
+            check.is_true(hasBatchim.hasDoubleBatchim("읊"))
+            check.is_true(hasBatchim.hasDoubleBatchim("웱"))
+        end)
+
+        test.suite("겹받침이 아니라고 판단되는 경우", function()
+            test.case("홑받침을 받으면 false를 반환한다.", function()
+                check.is_true(hasBatchim.hasSingleBatchim("공"))
+                check.is_true(hasBatchim.hasSingleBatchim("핫"))
+                check.is_true(hasBatchim.hasSingleBatchim("양"))
+                check.is_true(hasBatchim.hasSingleBatchim("신"))
+                check.is_true(hasBatchim.hasSingleBatchim("확"))
+            end)
+
+            test.case("받침이 없는 문자를 받으면 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasSingleBatchim("토"))
+                check.is_false(hasBatchim.hasSingleBatchim("서"))
+                check.is_false(hasBatchim.hasSingleBatchim("와"))
+            end)
+
+            test.case("한글 외의 문자를 입력하면 false를 반환한다.", function()
+                check.is_false(hasBatchim.hasSingleBatchim("cat"))
+                check.is_false(hasBatchim.hasSingleBatchim(""))
+                check.is_false(hasBatchim.hasSingleBatchim("?"))
+            end)
+        end)
+    end)
+end
