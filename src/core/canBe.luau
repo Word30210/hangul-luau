@@ -37,6 +37,12 @@ function module.canBeJungseong(
         return true
     end
 
+    if constants.DISASSEMBLE_VOWELS_BY_VOWEL[character] then
+        canBeJungseongCache[character] = true
+
+        return true
+    end
+
     if table.find(constants.JUNGSEONGS, character) then
         canBeJungseongCache[character] = true
 

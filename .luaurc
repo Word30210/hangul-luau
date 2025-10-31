@@ -4,6 +4,7 @@
     "lintErrors": true,
     "aliases": {
         "hangul-luau": "src",
-        "lune_packages": "lune_packages"
+        "lune_packages": "lune_packages",
+        "frktest": ".pesde/itsfrank+frktest/0.0.2"
     }
 }

@@ -24,3 +24,4 @@ lune = "^0.10.2"
 
 [dependencies]
 better_table = { name = "word30210/better_table", version = "^1.0.0" }
+frktest = { name = "itsfrank/frktest", version = "^0.0.2" }
