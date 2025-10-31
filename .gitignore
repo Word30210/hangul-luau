@@ -22,6 +22,6 @@ sourcemap.json
 
 # test files
 /test/*
-!/test/*.shared.client.luau
-!/test/*.shared.server.luau
-!/test/*.shared.luau
+!/test/*.spec.client.luau
+!/test/*.spec.server.luau
+!/test/*.spec.luau
