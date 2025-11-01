@@ -65,7 +65,10 @@ function module.disassembleToGroups(
 
         if disassembledCompleteCharacter ~= nil then
             table.insert(group, disassembledCompleteCharacter.choseong)
-            table.insert(group, disassembledCompleteCharacter.jungseong)
+            
+            for _, character in next, splitHangulCharacters(disassembledCompleteCharacter.jungseong), nil do
+                table.insert(group, character)
+            end
 
             for _, character in next, splitHangulCharacters(disassembledCompleteCharacter.jongseong), nil do
                 table.insert(group, character)

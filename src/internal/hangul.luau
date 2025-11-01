@@ -213,7 +213,8 @@ function module.binaryAssemble(
     local rest, lastCharacter = excludeLastElement(splitHangulCharacters(source))
     lastCharacter = lastCharacter or ""
 
-    local needJoinString = isWhitespace(lastCharacter) or isWhitespace(nextCharacter)
+    -- local needJoinString = isWhitespace(lastCharacter) or isWhitespace(nextCharacter)
+    local needJoinString = not module.isHangul(lastCharacter) or not module.isHangul(nextCharacter)
 
     return joinString(
         joinString(table.unpack(rest)),
