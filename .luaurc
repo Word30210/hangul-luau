@@ -3,6 +3,7 @@
     "lint": { "LocalShadow": false, "LocalUnused": false, "FunctionUnused": false, "ImportUnused": false },
     "lintErrors": true,
     "aliases": {
+        "lune": "~/.lune/.typedefs/0.10.2/",
         "hangul-luau": "src",
         "lune_packages": "lune_packages"
     }
