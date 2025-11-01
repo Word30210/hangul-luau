@@ -3,6 +3,13 @@ version = "1.0.0"
 authors = ["word30210"]
 repository = "https://github.com/Word30210/hangul-luau"
 license = "MIT"
+includes = [
+    "pesde.toml",
+    "README.md",
+    "LICENSE",
+    "src/**",
+    ".luaurc"
+]
 
 [target]
 environment = "lune"
